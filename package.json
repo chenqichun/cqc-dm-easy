@@ -1,0 +1,15 @@
+{
+  "name": "cqc-dm-easy",
+  "version": "1.0.0",
+  "author": "chenqichun<1069012191@qq.com>",
+  "description": "A bullet screen written in JavaScrpt that can be used in enterprise production environments, simple and easy to use",
+  "main": "index.js",
+  "private": false,
+  "scripts": {},
+  "keywords": [
+    "JavaScrpt",
+    "barrage",
+    "html"
+  ],
+  "license": "ISC"
+}

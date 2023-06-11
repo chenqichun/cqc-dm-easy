@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>弹幕</title>
+  <link rel="stylesheet" type="text/css" href="../css/other.css" />
+  <link rel="stylesheet" type="text/css" href="../css/cqc-dm-easy-main.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="title">小陈cqc弹幕</div>
+    <div class="video-wrap">
+      <div class="cqc-dm-model-container"></div>
+      <span class="bg1"></span>
+      <span class="bg2"></span>
+      <span class="bg3"></span>
+      <span class="bg4"></span>
+    </div>
+    <ul class="pannel">
+        <li>
+          <label>全屏与否：</label>
+          <button class="btn" id="screen">全屏</button>
+        </li>
+        <li>
+          <label>倍数播放：</label>
+          <div style="display:inline-flex;flex-wrap: wrap;">
+            <button class="btn" onclick="handleb(0.5)">0.5x倍数</button>
+            <button class="btn" onclick="handleb(1)">1x倍数</button>
+            <button class="btn" onclick="handleb(2)">2x倍数</button>
+          </div>
+        </li>
+        <li>
+          <label>播放/暂停：</label>
+          <button class="btn" id="pasued">暂停</button>
+        </li>
+        <li>
+          <label>清空屏幕：</label>
+          <button class="btn" onclick="handleClear()">清屏</button>
+        </li>
+        <li>
+          <label>修改透明度：</label>
+          <button class="btn" onclick="handleOpacity()">0.5透明</button>
+        </li>
+        <li>
+          <label>弹幕发送：</label>
+          <textarea type="text"></textarea>
+        </li>
+        <li>
+          <label for=""></label>
+          <button class="btn" id="handleSubmit">发送</button>
+        </li>
+        
+        
+        <div class="card">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+    </ul>
+  </div>
+  <h1>注：下个版本计划添加一下功能:可选显示区域，自由设置字体大小，h5端弹幕...等等</h1>
+</body>
+</html>
+<script src="../js/cqc-dm-easy-main.js"></script>
+<script>
+  const dm = new window.$CqcEasyDm({el:document.querySelector('.cqc-dm-model-container'), openTopSystem: true})
+  dm.setColor([
+    '#adc708',
+    '#2daebf',
+    '#a9014b',
+    '#ff5c00',
+    '#ffb515'
+  ])
+  var arr = [
+  '<div class="level"><div class="p1"></div><div class="p2">一刀9999，老婆跑不了，问你怎么办...</div><div class="p3"></div></level>',
+    "<div class='round'>第三方第<img class='emoji' src='../img/jh.gif' />三方让他</div>",
+    "<div class='round'>人天涯热土有</div>",
+    "<div class='round'>热热热</div>",
+    "<div class='round'>人团圆有一天<img class='emoji' src='../img/jh.gif' /></div>",
+    "<div class='round'>碎大石</div>",
+    "<div class='round'>特热特</div>",
+    "<div class='round'>热任务二</div>",
+    "<div class='round'>留意与</div>",
+    "<div class='round'>也热热TV发改革开放哈卡莱哈卡莱法拉</div>",
+    "<div class='round'>要<img class='emoji' src='../img/jh.gif' />人头圆舞曲</div>",
+    '<div class="level"><div class="p1"></div><div class="p2">道士带条狗，全区横着走</div><div class="p3"></div></level>',
+  '<div class="level"><div class="p1"></div><div class="p2">是兄弟，就来砍我</div><div class="p3"></div></level>',
+  '<div class="level"><div class="p1"></div><div class="p2">大家好，我是渣渣辉</div><div class="p3"></div></level>',
+
+
+  ];
+
+
+
+  arr.forEach(e => {
+    dm.setBarrage({content:e})
+  })
+  
+  
+  document.querySelector('#handleSubmit').onclick = () => {
+    dm.setBarrage({content:`<div class='round owner'>${document.querySelector('textarea').value}</div>`})
+  }
+  document.querySelector('#screen').onclick = () => {
+    document.documentElement.requestFullscreen()
+  }
+  document.querySelector('#pasued').onclick = function() {
+    if (dm.playStatus) {
+      dm.paused()
+      this.innerHTML = '播放'
+    } else {
+      dm.play()
+      this.innerHTML = '暂停'
+    }
+
+  }
+
+  function handleb (count) {
+    dm.changeSpeed(+count)
+  }
+
+  function handleClear() {
+    dm.clear()
+  }
+  function handleOpacity() {
+
+    dm.setOpacity(dm._opacity == 1 ? 0.5 : 1)
+  }
+</script>
