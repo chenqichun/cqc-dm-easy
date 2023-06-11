@@ -2,7 +2,7 @@
   "name": "cqc-dm-easy",
   "version": "1.0.0",
   "author": "chenqichun<1069012191@qq.com>",
-  "description": "A bullet screen written in JavaScrpt that can be used in enterprise production environments, simple and easy to use",
+  "description": "这是一个用纯 js 写的弹幕，实现了弹幕的 不重叠， 可暂停， 可倍数播放， 清屏， 等等自己定制功能，开箱即用，非常简单。后续再完善更多功能吧。使用请参考 example 里的例子。有啥问题可以添加微信 yyds-cqc 或者 qq 1069012191",
   "main": "index.js",
   "private": false,
   "scripts": {},
